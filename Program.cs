@@ -149,6 +149,43 @@ class Program
 
 
 
+            
+    
+
+        static string ConvertirNumeroALetras(int numero)
+        {
+            string[] unidades = { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve" };
+            string[] decenas = { "", "diez", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa" };
+            string[] diez_a_diecinueve = { "diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve" };
+
+            if (numero < 10)
+            {
+                return unidades[numero];
+            }
+            else if (numero >= 10 && numero < 20)
+            {
+                return diez_a_diecinueve[numero - 10];
+            }
+            else
+            {
+                int unidad = numero % 10;
+                int decena = numero / 10;
+
+                if (unidad == 0)
+                {
+                    return decenas[decena];
+                }
+                else
+                {
+                    return $"{decenas[decena]} y {unidades[unidad]}";
+                }
+            }
+        }
+    
+
+
+
+
 
 
     static void Main(string[] args)
@@ -176,7 +213,8 @@ class Program
             Console.WriteLine("2. Min Value From Array");
             Console.WriteLine("3. Suma Value From Array");
             Console.WriteLine("4. Suma Pares Value From Array");
-            Console.WriteLine("5. Salir");
+            Console.WriteLine("5. Numeros a Letras");
+            Console.WriteLine("6. Salir");
             Console.Write("Seleccione una opción: ");
                 switch (Console.ReadLine()) 
                 { 
@@ -199,6 +237,20 @@ class Program
                         Console.ReadKey();
                         break;
                     case "5":
+                            Console.Write("Ingrese un número (0-99): ");
+                            string input = Console.ReadLine();
+
+                            if (int.TryParse(input, out int numero) && numero >= 0 && numero <= 99)
+                            {
+                                Console.WriteLine($"El número {numero} en letras es: {ConvertirNumeroALetras(numero)}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Número inválido. Por favor ingrese un número entre 0 y 99.");
+                            }
+                            Console.ReadKey();
+                        break;
+                    case "6":
                         salir = true;
                         break;
                 
@@ -209,7 +261,7 @@ class Program
                 }
         }
 
-
+           
 
 
 
