@@ -154,6 +154,8 @@ static int[] ParValueFromArray2(int[] numeros)
 
         // Mostrar solo la hora
         Console.WriteLine("Hora actual: " + ahora.ToString("HH:mm:ss"));
+        Console.WriteLine("HOLAAA");
+        
 
     //     Console.WriteLine("El mayor numero del array es: "+ MaxValueFromArray(numeros));
     //     Console.WriteLine("El menor numero del array es: "+ MinValueFromArray(numeros));
